@@ -1,6 +1,17 @@
 import java.util.ArrayList;
 
 public class detectcycleundirected {
+    static class Edge {
+        int src;
+        int dest;
+        int wt;
+
+        public Edge(int src, int dest, int wt) {
+            this.src = src;
+            this.dest = dest;
+            this.wt = wt;
+        }
+    }
     //cycle detection in undirected graph
     public static boolean detectcycle(ArrayList<Edge>[] ed){   // O(E+V)
         boolean[] visited=new boolean[ed.length];
@@ -35,5 +46,22 @@ public class detectcycleundirected {
 
         return false;
 
+    }
+    public static void main(String[] args) {
+        ArrayList<Edge>[] graph = new ArrayList[5];
+        for (int i = 0; i < graph.length; i++) {
+            graph[i] = new ArrayList<>();
+        }
+        // Add edges to the graph
+        graph[0].add(new Edge(0, 1, 1));
+        graph[1].add(new Edge(1, 0, 1));
+        graph[1].add(new Edge(1, 2, 1));
+        graph[2].add(new Edge(2, 1, 1));
+        graph[2].add(new Edge(2, 3, 1));
+        graph[3].add(new Edge(3, 2, 1));
+        graph[3].add(new Edge(3, 4, 1));
+        graph[4].add(new Edge(4, 3, 1));
+
+        System.out.println("Does the graph contain a cycle? " + detectcycle(graph));
     }
 }

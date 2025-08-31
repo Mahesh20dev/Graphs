@@ -1,6 +1,14 @@
 import java.util.ArrayList;
 
 public class haspath {
+    static class Edge {
+        int src, dest;
+
+        Edge(int src, int dest) {
+            this.src = src;
+            this.dest = dest;
+        }
+    }
     //has path
     public static boolean haspath(ArrayList<Edge>[] graph,boolean[] visited,int src,int dest ){
         if(src==dest){
@@ -32,5 +40,20 @@ public class haspath {
         visited[src] = false;
         
     }
+    public static void main(String[] args) {
+        ArrayList<Edge>[] graph = new ArrayList[5];
+        for (int i = 0; i < graph.length; i++) {
+            graph[i] = new ArrayList<>();
+        }
+        // Add edges to the graph
+        graph[0].add(new Edge(0, 1));
+        graph[1].add(new Edge(1, 2));
+        graph[2].add(new Edge(2, 3));
+        graph[3].add(new Edge(3, 4));
 
+        boolean[] visited = new boolean[5];
+        System.out.println("Path exists: " + haspath(graph, visited, 0, 4));
+        System.out.println("All paths from 0 to 4:");
+        haspath1(graph, "", 0, 4, visited);
+    }
 }

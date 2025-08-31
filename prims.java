@@ -2,6 +2,15 @@ import java.util.ArrayList;
 import java.util.PriorityQueue;
 
 public class prims {
+    static class Edge {
+        int src, dest, wt;
+
+        Edge(int src, int dest, int wt) {
+            this.src = src;
+            this.dest = dest;
+            this.wt = wt;
+        }
+    }
      //prims algorithm MST O(E log V)
     public static class pair1 implements Comparable<pair1>{
         int vertex;
